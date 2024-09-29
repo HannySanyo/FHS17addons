@@ -1,4 +1,9 @@
 
+// This is a javascript to validate the birtday example. We may want to write a script to validate whether they inputted a calid
+// phone number or something here eventually. But it's not needed for this to work rn.
+
+// This script should not be referenced as of right now.
+
 $(document).ready(function () {
    
 var dtToday = new Date();
