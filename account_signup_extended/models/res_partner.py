@@ -9,12 +9,13 @@ import re
 from datetime import datetime,date
 from odoo.exceptions import ValidationError
 import logging
+
 _logger = logging.getLogger(__name__)
 
 class ResPartner(models.Model):
 	_inherit = 'res.partner'
 
-    phone = fields.Char(string="Phone Number")
+    phone = fields.Char(string='Phone Number')
 # 	wk_dob = fields.Date( string='Date of Birth')
 
 # 	@api.constrains('wk_dob')
