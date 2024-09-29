@@ -1,33 +1,44 @@
 # -*- coding: utf-8 -*-
 #################################################################################
-# Author      : Grace Sanyo
-# Description : Extension of the auth_signup page for additional fields
-# Rev History : Date          Author       Summary
-#               09/26/2024    G. Sanyo     Extend auth_signup w/ phone # and attachment fields
-#              
+# Author      : Webkul Software Pvt. Ltd. (<https://webkul.com/>)
+# Copyright(c): 2015-Present Webkul Software Pvt. Ltd.
+# All Rights Reserved.
+#
+#
+#
+# This program is copyright property of the author mentioned above.
+# You can`t redistribute it and/or modify it.
+#
+#
+# You should have received a copy of the License along with this program.
+# If not, see <https://store.webkul.com/license.html/>
 #################################################################################
 {
-  "name"                 :  "Account Sign-Up Extended",
-  "summary"              :  """Add a mandatory field for users to share their phone number and allow for contract or tax exempt attachments during the sign up.""",
-  "category"             :  "Custom fields",
-  "version"              :  "1.0.0",
-  "author"               :  "Grace Sanyo",
-  "description"          :  """Add phone number and attachment fields to account sign up""",
+  "name"                 :  "Website Date-Of-Birth On Signup Form",
+  "summary"              :  """Add a mandatory field for users to share their date of birth during the sign up.""",
+  "category"             :  "Website",
+  "version"              :  "1.0.1",
+  "sequence"             :  1,
+  "author"               :  "Webkul Software Pvt. Ltd.",
+  "license"              :  "Other proprietary",
+  "website"              :  "https://store.webkul.com",
+  "description"          :  """https://store.webkul.com""",
+  "live_test_url"        :  "http://odoodemo.webkul.com/?module=account_sign_up_details&version=13.0",
   "depends"              :  ['auth_signup'],
   "data"                 :  [
-                             'views/auth_signup_template.xml',
+                             'views/res_partner_view.xml',
+                             'views/account_details_template.xml',
                             ],
+  "images"               :  ['static/description/Banner.png'],
   "application"          :  True,
   "installable"          :  True,
   "auto_install"         :  False,
   "pre_init_hook"        :  "pre_init_check",
-  
-  # May want to add a valid phone number format check here using javascript, but for rn, not needed.
-  # 'assets':{
-  # 'web.assets_frontend':[
+  'assets':{
+  'web.assets_frontend':[
     
-  #   'account_signup_extended/static/src/js/validate.js',
+    'account_sign_up_details/static/src/js/validate.js',
     
-  #   ],
-  # },
+    ],
+  },
 }
