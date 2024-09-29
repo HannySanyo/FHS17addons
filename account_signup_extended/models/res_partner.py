@@ -4,9 +4,7 @@
 # Copyright (c) 2018-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>:wink:
 # See LICENSE file for full copyright and licensing details.
 #################################################################################
-from odoo import api, fields, models, _
-import re
-from datetime import datetime,date
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 import logging
 
