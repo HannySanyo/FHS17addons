@@ -5,14 +5,8 @@
                 <label for="phone">Phone Number</label>
                 <input type="text" name="phone" t-att-value="phone" id="phone" class="form-control form-control-sm" placeholder="e.g. +13038657377" required="required"/>
             </div>
-            <div class="form-group field-login">
-                <label for="attachment">Attachment</label>
-                <input type="file" name="attachment" id="attachment" class="form-control form-control-sm"/>
-            </div>
-            <!-- <div class="form-group field-login">
-                <label for="attachment">Attachment</label>
-                <input type="file" name="attachment" id="attachment" class="form-control form-control-sm"/>
-            </div> -->
-        </xpath>
+		</xpath>
+    
     </template>
+
 </odoo>
