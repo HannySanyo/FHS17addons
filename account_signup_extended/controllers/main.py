@@ -13,8 +13,9 @@ _logger = logging.getLogger(__name__)
 class AuthSignupHomeInherited(AuthSignupHome):
 
     def get_auth_signup_qcontext(self):
+        print(request.params)
         qcontext = super(AuthSignupHomeInherited, self).get_auth_signup_qcontext()
-        qcontext.update({key: v for (key, v) in request.params.items() if key in ['phone']})
+        qcontext.update({k: v for (k, v) in request.params.items() if k in ['phone']})
         return qcontext
 
     def _prepare_signup_values(self, qcontext):
