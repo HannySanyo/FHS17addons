@@ -8,7 +8,7 @@ import logging
 from odoo import _
 from odoo.http import request,route
 from odoo.exceptions import UserError
-from odoo.addons.web.controllers.home import SIGN_UP_REQUEST_PARAMS, Home
+#from odoo.addons.web.controllers.home import SIGN_UP_REQUEST_PARAMS, Home
 from odoo.addons.auth_signup.controllers.main import AuthSignupHome
 
 _logger = logging.getLogger(__name__)
