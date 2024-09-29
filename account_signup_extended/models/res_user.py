@@ -9,9 +9,10 @@ import logging
 
 _logger = logging.getLogger(__name__)
 
-# class ResUsers(models.Model):
-# 	_inherit = 'res.users'
+class ResUsers(models.Model):
+	_inherit = 'res.users'
 
+    phone = fields.Char(string="Phone Number")
 # 	@api.model
 # 	def signup(self, values, token=None):
 # 		""" signup a user, to either:
