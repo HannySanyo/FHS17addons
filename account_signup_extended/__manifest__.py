@@ -8,7 +8,7 @@
 #################################################################################
 {
   "name"                 :  "Account Sign-Up Extended",
-  "summary"              :  """Add a mandatory field for users to share their phone number and allow for attachments during the sign up.""",
+  "summary"              :  """Add a mandatory field for users to share their phone number and allow for contract or tax exempt attachments during the sign up.""",
   "category"             :  "Custom fields",
   "version"              :  "1.0.0",
   "author"               :  "Grace Sanyo",
