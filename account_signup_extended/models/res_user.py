@@ -23,7 +23,7 @@ class ResUsers(models.Model):
 			:return: (dbname, login, password) for the signed up user
 		"""
 
-        """Extend the signup method to include the phone number field"""
+        # Extend the signup method to include the phone number field
         if 'phone' in values:
             values['phone'] = values.get('phone')
         return super(ResUsers, self).signup(values, token)
