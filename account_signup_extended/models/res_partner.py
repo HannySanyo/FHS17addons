@@ -11,14 +11,6 @@ import logging
 _logger = logging.getLogger(__name__)
 
 class ResPartner(models.Model):
-	_inherit = 'res.partner'
-
+    _inherit = 'res.partner'
+    
     phone = fields.Char(string='Phone Number')
-# 	wk_dob = fields.Date( string='Date of Birth')
-
-# 	@api.constrains('wk_dob')
-# 	def age_cal(self):
-# 		for rec in self:	
-# 			if self.wk_dob > date.today():
-# 				raise ValidationError("DOB should not exceed the Current Date")
-					
