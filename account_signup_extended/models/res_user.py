@@ -24,6 +24,15 @@ class ResUsers(models.Model):
 		"""
 
         # Extend the signup method to include the phone number field
-        if 'phone' in values:
-            values['phone'] = values.get('phone')
-        return super(ResUsers, self).signup(values, token)
+        # if 'phone' in values:
+        #     values['phone'] = values.get('phone')
+        # return super(ResUsers, self).signup(values, token)
+
+		if token:
+			partner = self.env['res.partner']._signup_retrieve_partner(token, check_validity=True, raise_exception=True)
+			partner_user = partner.user_ids and partner.user_ids[0] or False
+			if partner_user:
+				values['phone'] = values.get('phone')
+		else:	
+			values['phone'] = values.get('phone')
+		return super(ResUsers, self).signup(values, token)
