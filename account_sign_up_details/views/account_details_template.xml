@@ -17,7 +17,6 @@
                 <label for="attachment">Attachment</label>
                 <input type="file" name="attachment" id="attachment" class="form-control form-control-sm"/>
             </div>
-        </xpath>>
+        </xpath>
 	</template>
-
 </odoo>
