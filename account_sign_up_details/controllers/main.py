@@ -46,4 +46,4 @@ class AuthSighup(AuthSignupHome):
         if attachment_taxexempt:
             datas = base64.b64encode(attachment_taxexempt.read())
             values.update({'attachment_taxexempt': datas, 'attachment_taxexempt_name': attachment_taxexempt.filename})
-        super(AuthSignupStreet, self)._signup_with_values(token, values)
+        super(AuthSighup, self)._signup_with_values(token, values)
