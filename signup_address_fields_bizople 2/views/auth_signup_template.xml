@@ -8,9 +8,11 @@
             <div class="d-flex field-user-type form-group justify-content-around">
                 <label class="radio-inline user_btn">
                     <input type="radio" name="company_type" value="person" class="person" checked="checked" required="required" />
+                    Individual
                 </label>
                 <label class="radio-inline company_btn">
                     <input type="radio" name="company_type" value="company" class="company" required="required" />
+                    Company
                 </label>
             </div>
         </xpath>
