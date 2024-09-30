@@ -5,17 +5,17 @@
 #################################################################################
 from odoo import api, fields, models, _
 import re
-from datetime import datetime,date
-from odoo.exceptions import ValidationError
+from datetime import datetime, date
 import logging
+
 _logger = logging.getLogger(__name__)
 
 class ResPartner(models.Model):
-	_inherit = 'res.partner'
-
+    _inherit = 'res.partner'
+    
     attachment_contractor = fields.Binary(string="If you are a contractor, please provide contractor license documentation:", attachment=True)
     attachment_contractor_name = fields.Char(string='Contractor Attachment Name')
-	attachment_taxexempt = fields.Binary(string="If you are tax exempt, please provide proof of exemption documentation:", attachment=True)
+    attachment_taxexempt = fields.Binary(string="If you are tax exempt, please provide proof of exemption documentation:", attachment=True)
     attachment_taxrexempt_name = fields.Char(string='Tax Exempt Attachment Name')
 
 	# @api.constrains('phone')
