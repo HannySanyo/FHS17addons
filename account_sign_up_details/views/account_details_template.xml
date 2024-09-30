@@ -23,7 +23,7 @@
                 <label for="attachment_taxexempt">If you are tax exempt, please provide proof of exemption documentation:</label>
                 <input type="file" name="attachment_taxexempt" id="attachment_taxexempt" class="form-control form-control-sm"/>
             </div>
-            <div style="height:20px">
+            <div style="height:15px">
             </div>
         </xpath>
 	</template>
