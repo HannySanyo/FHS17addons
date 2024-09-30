@@ -5,14 +5,15 @@
 #################################################################################
 {
   "name"                 :  "Account Sign-Up Extended",
-  "summary"              :  """Add a mandatory field for users to input their phone number during account sign up.""",
+  "summary"              :  """Add a mandatory field for users to input their phone number and optional attachments for contractors and those tax exempt during account sign up.""",
   "category"             :  "Website",
   "version"              :  "1.0.0",
   "sequence"             :  1,
   "author"               :  "FHS - G.S.S.",
   "depends"              :  ['auth_signup'],
   "data"                 :  [
-                             'views/account_details_template.xml',   #'views/res_partner_view.xml',
+                             'views/res_partner_view.xml',
+                             'views/account_details_template.xml',
                             ],
   "images"               :  ['static/description/fhs.png'],
   "application"          :  True,

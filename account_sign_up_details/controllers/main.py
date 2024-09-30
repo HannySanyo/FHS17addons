@@ -3,6 +3,7 @@
 # Revision History:  Engineer    Date          Description
 #                    G. Sanyo    09/29/2024    Creation
 #################################################################################
+import base64
 import logging
 from odoo import _
 from odoo.http import request,route
@@ -33,3 +34,16 @@ class AuthSighup(AuthSignupHome):
     def get_auth_signup_qcontext(self):
         SIGN_UP_REQUEST_PARAMS.update({'phone'})
         return super().get_auth_signup_qcontext()
+
+    def _signup_with_values(self, token, values):
+        context = self.get_auth_signup_qcontext()
+        attachment_contractor = context.get('attachment_contractor')
+        if attachment_contractor:
+            datas = base64.b64encode(attachment_contractor.read())
+            values.update({'attachment_contractor': datas, 'attachment_contractor_name': attachment_contractor.filename})
+
+        attachment_taxexempt = context.get('attachment_taxexempt')
+        if attachment_taxexempt:
+            datas = base64.b64encode(attachment_taxexempt.read())
+            values.update({'attachment_taxexempt': datas, 'attachment_taxexempt_name': attachment_taxexempt.filename})
+        super(AuthSignupStreet, self)._signup_with_values(token, values)

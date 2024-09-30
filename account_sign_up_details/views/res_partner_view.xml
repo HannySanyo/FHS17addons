@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <record id="res_partner_form_id_inherited" model="ir.ui.view">
-            <field name="name">res.partner.form</field>
+        <record id="res_partner_form_attachment_contractor" model="ir.ui.view">
+            <field name="name">res.partner.form.attachment_contractor</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
-                <field name="website" position="before">
-                     <field name="phone"/>
-                 </field>
+                <xpath expr="//form/sheet/notebook" position="inside">
+                    <page string="Contractor Attachment">
+                        <field name="attachment_contractor" filename="attachment_contractor_name"/>
+                        <field name="attachment_contractor_name" invisible="1"/>
+                    </page>
+                </xpath>
+                <xpath expr="//form/sheet/notebook" position="inside">
+                    <page string="Tax Exempt Attachment">
+                        <field name="attachment_taxexempt" filename="attachment_taxexempt_name"/>
+                        <field name="attachment_taxexempt_name" invisible="1"/>
+                    </page>
+                </xpath>
             </field>
         </record>
     </data>
