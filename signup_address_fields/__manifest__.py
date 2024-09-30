@@ -18,8 +18,8 @@
     ],
     'assets': {
         'web.assets_frontend': [
-            'signup_address_fields_bizople/static/src/js/auth_signup.js',
-            'signup_address_fields_bizople/static/src/scss/auth_signup.scss',
+            'signup_address_fields/static/src/js/auth_signup.js',
+            'signup_address_fields/static/src/scss/auth_signup.scss',
         ],
     },
     'images': [
