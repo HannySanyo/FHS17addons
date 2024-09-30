@@ -17,8 +17,8 @@
                 <label for="attachment_contractor">If you are a contractor, please provide contractor license documentation:</label>
                 <input type="file" name="attachment_contractor" id="attachment_contractor" class="form-control form-control-sm"/>
             </div>
-        </xpath>
-        <xpath expr="//div[last()]" position="after">
+            <div style="height:50px">
+            </div>
             <div class="form-group field-login">
                 <label for="attachment_taxexempt">If you are tax exempt, please provide proof of exemption documentation:</label>
                 <input type="file" name="attachment_taxexempt" id="attachment_taxexempt" class="form-control form-control-sm"/>
