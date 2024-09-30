@@ -12,7 +12,7 @@
 				<input type="phone"  name="phone" t-att-value="phone" id="phone" class="form-control form-control-sm" required="required" placeholder="+13038657377" />
 			</div>
 		</xpath>
-        <xpath expr="//div[@class='mb-3 field-phone']" position="after">
+        <xpath expr="//div[last()]" position="after">
             <div class="form-group field-login">
                 <label for="attachment_contractor">If you are a contractor, please provide contractor license documentation:</label>
                 <input type="file" name="attachment_contractor" id="attachment_contractor" class="form-control form-control-sm"/>
