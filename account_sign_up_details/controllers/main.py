@@ -29,7 +29,7 @@ class AuthSignupHome(Home):
         self._signup_with_values(qcontext.get('token'), values)
         request.env.cr.commit()
     
-class AuthSighup(AuthSignupHome):
+class AuthSignup(AuthSignupHome):
 
     def get_auth_signup_qcontext(self):
         SIGN_UP_REQUEST_PARAMS.update({'phone'})
@@ -37,13 +37,8 @@ class AuthSighup(AuthSignupHome):
 
     def _signup_with_values(self, token, values):
         context = self.get_auth_signup_qcontext()
-        attachment_contractor = context.get('attachment_contractor')
-        if attachment_contractor:
-            datas = base64.b64encode(attachment_contractor.read())
-            values.update({'attachment_contractor': datas, 'attachment_contractor_name': attachment_contractor.filename})
-
-        attachment_taxexempt = context.get('attachment_taxexempt')
-        if attachment_taxexempt:
-            datas = base64.b64encode(attachment_taxexempt.read())
-            values.update({'attachment_taxexempt': datas, 'attachment_taxexempt_name': attachment_taxexempt.filename})
-        super(AuthSighup, self)._signup_with_values(token, values)
+        attachment = context.get('attachment')
+        if attachment:
+            datas = base64.b64encode(attachment.read())
+            values.update({'attachment': datas, 'attachment_name': attachment.filename})
+        super(AuthSignup, self)._signup_with_values(token, values)

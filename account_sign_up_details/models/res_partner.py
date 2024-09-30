@@ -8,30 +8,11 @@ import logging
 
 _logger = logging.getLogger(__name__)
 
-class ResPartner(models.Model):
+class ResPartnerInherit(models.Model):
     _inherit = 'res.partner'
 
-    # Field for contractor attachment
-    attachment_contractor = fields.Binary(
-        string="Contractor License Document",
-        attachment=True,
-        help="If you are a contractor, please provide contractor license documentation."
-    )
-    attachment_contractor_name = fields.Char(
-        string='Contractor Attachment Name',
-        help="Name of the contractor attachment file."
-    )
-
-    # Field for tax exemption attachment
-    attachment_taxexempt = fields.Binary(
-        string="Tax Exempt Document",
-        attachment=True,
-        help="If you are tax exempt, please provide proof of exemption documentation."
-    )
-    attachment_taxexempt_name = fields.Char(
-        string='Tax Exempt Attachment Name',
-        help="Name of the tax exempt attachment file."
-    )
+    attachment = fields.Binary(string="Attachment", attachment=True)
+    attachment_name = fields.Char(string='Attachment Name')
 
 
 	# @api.constrains('phone')
