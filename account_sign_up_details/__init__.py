@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 #################################################################################
-#
-# Copyright (c) 2018-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>:wink:
-# See LICENSE file for full copyright and licensing details.
+# File Name: __inti__.py
+# Revision History:  Engineer    Date          Description
+#                    G. Sanyo    09/29/2024    Creation
 #################################################################################
 from . import models
 from . import controllers

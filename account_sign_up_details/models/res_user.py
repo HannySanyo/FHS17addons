@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 #################################################################################
-#
-# Copyright (c) 2018-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>:wink:
-# See LICENSE file for full copyright and licensing details.
+# File Name: res_user.py
+# Revision History:  Engineer    Date          Description
+#                    G. Sanyo    09/29/2024    Creation
 #################################################################################
 from odoo import api, fields, models, _
 import logging
@@ -27,8 +26,8 @@ class ResUsers(models.Model):
 			partner = self.env['res.partner']._signup_retrieve_partner(token, check_validity=True, raise_exception=True)
 			partner_user = partner.user_ids and partner.user_ids[0] or False
 			if partner_user:
-				values['wk_dob'] = values.get('wk_dob')
+				values['phone'] = values.get('phone')
 		else:	
-			values['wk_dob'] = values.get('wk_dob')
+			values['phone'] = values.get('phone')
 		return super(ResUsers, self).signup(values, token)
 		

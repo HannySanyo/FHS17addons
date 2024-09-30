@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
                 <field name="website" position="before">
-                     <field name="wk_dob"/>
+                     <field name="phone"/>
                  </field>
             </field>
         </record>
