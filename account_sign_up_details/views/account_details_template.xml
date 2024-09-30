@@ -18,7 +18,7 @@
                 <label for="attachment">If you are a contractor, please provide contractor license documentation:</label>
                 <input type="file" name="attachment" id="attachment" class="form-control form-control-sm"/>
             </div>
-            <div style="height:15px">
+            <div style="height:20px">
             </div>
         </xpath>
     </template>
