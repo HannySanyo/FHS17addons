@@ -7,7 +7,7 @@
     </template>
 	<template id="auth_signup_extended" inherit_id="auth_signup.fields" name="Account Signup Phone Number">
 		<xpath expr="//div[@class='mb-3 field-confirm_password']" position="after">
-			<div class="mb-3 field-phone]">
+			<div class="mb-3 field-phone">
 				<label for="phone">Phone Number</label>
 				<input type="phone"  name="phone" t-att-value="phone" id="phone" class="form-control form-control-sm" required="required" placeholder="+13038657377" />
 			</div>
