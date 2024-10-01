@@ -9,9 +9,11 @@ import logging
 class ResPartnerInherit(models.Model):
     _inherit = 'res.partner'
 
-    #name = fields.Char(string='Name', required=True)
     attachment = fields.Binary(string="Attachment", attachment=True)
     attachment_name = fields.Char(string='Attachment Name')
+
+    contractor_doc_field= fields.Char(string="Contractor Document", required=True)
+
 
     @api.model
     def create_attachment_record(self, vals):
