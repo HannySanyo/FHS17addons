@@ -6,8 +6,8 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//div[contains(@class, 'partner-detail col')]" position="after">
-                    <label for="contactor_doc">Contractor Document</label>
+                <xpath expr="//form/sheet/notebook" position="inside">
+                    <page string="Attachment">
                         <field name="attachment" filename="attachment_name"/>
                         <field name="attachment_name" invisible="1"/>
                 </xpath>
