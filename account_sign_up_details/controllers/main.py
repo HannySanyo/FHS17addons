@@ -17,7 +17,7 @@ _logger = logging.getLogger(__name__)
 class AuthSignupHome(Home):
     def do_signup(self, qcontext):
         """ Shared helper that creates a res.partner out of a token """
-        values = {key: qcontext.get(key) for key in ('login', 'name', 'password', 'phone') }
+        values = {key: qcontext.get(key) for key in ('login', 'name', 'password', 'phone', 'attachment') }
         if not values:
             raise UserError(_("The form was not properly filled in."))
         if values.get('password') != qcontext.get('confirm_password'):
@@ -38,8 +38,7 @@ class AuthSignup(AuthSignupHome):
     def _signup_with_values(self, token, values):
         context = self.get_auth_signup_qcontext()
         attachment = context.get('attachment')
-        print("THIS IS THE ATTACHMENT!")
-        print(attachment)
+
         if attachment:
             datas = base64.b64encode(attachment.read())
             values.update({'attachment': datas, 'attachment_name': attachment.filename})

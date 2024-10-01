@@ -3,21 +3,28 @@
 # Revision History:  Engineer    Date          Description
 #                    G. Sanyo    09/29/2024    Creation
 #################################################################################
-from odoo import api, fields, models, _
+from odoo import models, fields, api
 import logging
-
-_logger = logging.getLogger(__name__)
 
 class ResPartnerInherit(models.Model):
     _inherit = 'res.partner'
 
+    #name = fields.Char(string='Name', required=True)
     attachment = fields.Binary(string="Attachment", attachment=True)
     attachment_name = fields.Char(string='Attachment Name')
 
+    @api.model
+    def create_attachment_record(self, vals):
+        # Create the record
+        record = super(ResPartnerInherit, self).create(vals)
 
-	# @api.constrains('phone')
-	# def age_cal(self):
-	# 	for rec in self:	
-	# 		if self.wk_dob > date.today():
-	# 			raise ValidationError("DOB should not exceed the Current Date")
-					
+        # Create an attachment if the binary field has data
+        if vals.get('attachment'):
+            self.env['ir.attachment'].create_attachment_record({
+                'name': vals.get('attachment_name'),
+                'type': 'binary',
+                'datas': vals.get('attachment'),
+                'res_model': self._name,
+                'res_id': record.id,
+            })
+        return record

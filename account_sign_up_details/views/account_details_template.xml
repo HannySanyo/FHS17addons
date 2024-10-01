@@ -17,6 +17,7 @@
             <div class="form-group field-login">
                 <label for="attachment">If you are a contractor, please provide contractor license documentation:</label>
                 <input type="file" name="attachment" id="attachment" class="form-control form-control-sm"/>
+                <input type="hidden" name="attachment_name" t-att-value="'file_' + name" />
             </div>
             <div style="height:20px">
             </div>
