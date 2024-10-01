@@ -38,6 +38,8 @@ class AuthSignup(AuthSignupHome):
     def _signup_with_values(self, token, values):
         context = self.get_auth_signup_qcontext()
         attachment = context.get('attachment')
+        print("THIS IS THE ATTACHMENT!")
+        print(attachment)
         if attachment:
             datas = base64.b64encode(attachment.read())
             values.update({'attachment': datas, 'attachment_name': attachment.filename})
