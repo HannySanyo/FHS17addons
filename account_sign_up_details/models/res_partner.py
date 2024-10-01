@@ -12,9 +12,6 @@ class ResPartnerInherit(models.Model):
     attachment = fields.Binary(string="Attachment", attachment=True)
     attachment_name = fields.Char(string='Attachment Name')
 
-    contractor_doc_field= fields.Char(string="Contractor Document", required=True)
-
-
     @api.model
     def create_attachment_record(self, vals):
         # Create the record
