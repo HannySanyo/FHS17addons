@@ -13,18 +13,11 @@
   "depends"              :  ['auth_signup'],
   "data"                 :  [
                              'views/account_details_template.xml',
-                             'views/res_partner_view.xml',
+  #                           'views/res_partner_view.xml',
                             ],
   "images"               :  ['static/description/fhs.png'],
   "application"          :  True,
   "installable"          :  True,
   "auto_install"         :  False,
   "pre_init_hook"        :  "pre_init_check",
-  'assets':{
-  'web.assets_frontend':[
-    
-    'account_sign_up_details/static/src/js/validate.js',
-    
-    ],
-  },
 }

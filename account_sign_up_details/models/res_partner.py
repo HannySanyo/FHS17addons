@@ -9,8 +9,8 @@ import logging
 class ResPartnerInherit(models.Model):
     _inherit = 'res.partner'
 
-    attachment = fields.Binary(string="Attachment", attachment=True)
-    attachment_name = fields.Char(string='Attachment Name')
+    #attachment = fields.Binary(string="Attachment", attachment=True)
+    #attachment_name = fields.Char(string='Attachment Name')
 
     @api.model
     def create_attachment_record(self, vals):
@@ -18,11 +18,11 @@ class ResPartnerInherit(models.Model):
         record = super(ResPartnerInherit, self).create(vals)
 
         # Create an attachment if the binary field has data
-        if vals.get('attachment'):
+        if vals.get('x_studio_contractor_doc'):
             self.env['ir.attachment'].create_attachment_record({
-                'name': vals.get('attachment_name'),
+                'name': vals.get('x_studio_contractor_doc_name'),
                 'type': 'binary',
-                'datas': vals.get('attachment'),
+                'datas': vals.get('x_studio_contractor_doc'),
                 'res_model': self._name,
                 'res_id': record.id,
             })
