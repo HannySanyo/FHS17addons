@@ -8,8 +8,11 @@ from odoo import models, fields, api
 class ResPartnerInherit(models.Model):
     _inherit = 'res.partner'
 
-    attachment = fields.Binary(string='Attachment', attachment=True)
-    attachment_name = fields.Char(string='Attachment Name')
+    contractor_doc = fields.Binary(string='Contractor Doc', attachment=True)
+    contractor_doc_name = fields.Char(string='Contractor Doc Name')
+    fiscal_pos_doc = fields.Binary(string='Fiscal Position', attachment=True)
+    fiscal_pos_doc_name = fields.Char(string='Fiscal Position Name')
+
 
     @api.model
     def create_attachment_record(self, vals):
@@ -17,15 +20,15 @@ class ResPartnerInherit(models.Model):
         record = super(ResPartnerInherit, self).create(vals)
 
         # Create an attachment if the binary field has data
-        if vals.get('attachment'):
+        if vals.get('contractor_doc'):
 
-            record.x_studio_contractor_doc = vals.get('attachment')
-            record.x_studio_contractor_doc_filename = vals.get('attachment_name')
+            record.x_studio_contractor_doc = vals.get('contractor_doc')
+            record.x_studio_contractor_doc_filename = vals.get('contractor_doc_name')
 
             self.env['ir.attachment'].create_attachment_record({
-                'name': vals.get('attachment_name'),
+                'name': vals.get('contractor_doc_name'),
                 'type': 'binary',
-                'datas': vals.get('attachment'),
+                'datas': vals.get('contractor_doc'),
                 'res_model': self._name,
                 'res_id': record.id,
             })
