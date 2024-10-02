@@ -15,20 +15,19 @@ class ResPartnerInherit(models.Model):
     def create_attachment_record(self, vals):
         # Create the record
         record = super(ResPartnerInherit, self).create(vals)
-        #contract_record = env(res.partner).browse(record_id)
-
-        # record.x_studio_contractor_doc
 
         # Create an attachment if the binary field has data
-        if vals.get('x_studio_contractor_doc'):
+        if vals.get('attachment'):
+
+            record.x_studio_contractor_doc = vals.get('attachment')
+            record.x_studio_contractor_doc_filename = vals.get('attachment_name')
+
             self.env['ir.attachment'].create_attachment_record({
-                'name': vals.get('x_studio_contractor_doc_filename'),
+                'name': vals.get('attachment_name'),
                 'type': 'binary',
-                'datas': vals.get('x_studio_contractor_doc'),
+                'datas': vals.get('attachment'),
                 'res_model': self._name,
                 'res_id': record.id,
             })
+            
         return record
-
-# Update the field with new data
-#record.x_attachment_name = 'Your New Value'  # Set the new value
