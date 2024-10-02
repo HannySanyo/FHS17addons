@@ -20,7 +20,7 @@ class ResPartnerInherit(models.Model):
         # Create an attachment if the binary field has data
         if vals.get('x_studio_contractor_doc'):
             self.env['ir.attachment'].create_attachment_record({
-                'name': vals.get('x_studio_contractor_doc_name'),
+                'name': vals.get('x_studio_contractor_doc_filename'),
                 'type': 'binary',
                 'datas': vals.get('x_studio_contractor_doc'),
                 'res_model': self._name,
