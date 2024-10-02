@@ -8,13 +8,20 @@ from odoo import models, fields, api
 class ResPartnerInherit(models.Model):
     _inherit = 'res.partner'
 
-    attachment = fields.Binary(string="Attachment", attachment=True)
-    attachment_name = fields.Char(string='Attachment Name')
-
     @api.model
-    def create_attachment_record(self, vals):
-        # Create the record
-        record = super(ResPartnerInherit, self).create(vals)
+    def update_custom_field(self, vals):
+        partners = self.search([('active', '=', True)])
+        for partner in partners:
+            partner.x_studio_contractor_doc = vals.get('attachment') 
+            partner.x_studio_contractor_doc_filename = vals.get('attachment_name')
+
+    # attachment = fields.Binary(string="Attachment", attachment=True)
+    # attachment_name = fields.Char(string='Attachment Name')
+
+    # @api.model
+    # def create_attachment_record(self, vals):
+    #     # Create the record
+    #     record = super(ResPartnerInherit, self).create(vals)
 
         # # Create an attachment if the binary field has data
         # if vals.get('attachment'):
@@ -30,4 +37,4 @@ class ResPartnerInherit(models.Model):
         #         'res_id': record.id,
         #     })
 
-        return record
+        # return record
