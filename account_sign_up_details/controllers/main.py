@@ -4,32 +4,42 @@
 #                    G. Sanyo    09/29/2024    Creation
 #################################################################################
 import base64
+import logging
 from odoo import _
-from odoo import http
 from odoo.http import request,route
 from odoo.exceptions import UserError
-from odoo.addons.web.controllers.home import SIGN_UP_REQUEST_PARAMS
+from odoo.addons.web.controllers.home import SIGN_UP_REQUEST_PARAMS, Home
 from odoo.addons.auth_signup.controllers.main import AuthSignupHome
-    
-class AuthSignupHomeInherit(AuthSignupHome):
+
+_logger = logging.getLogger(__name__)
+
+
+class AuthSignupHome(Home):
     def do_signup(self, qcontext):
         """ Shared helper that creates a res.partner out of a token """
-        values = {key: qcontext.get(key) for key in ('login', 'name', 'password', 'phone', 'attachment','attachment_name') }
+        values = {key: qcontext.get(key) for key in ('login', 'name', 'password', 'phone', 'attachment') }
         if not values:
             raise UserError(_("The form was not properly filled in."))
         if values.get('password') != qcontext.get('confirm_password'):
             raise UserError(_("Passwords do not match; please retype them."))
-        if values.get('attachment'):
-            datas = base64.b64encode(values.get('attachment').read())
-            values.update({'attachment': datas, 'attachment_name': values.get('attachment').filename})
-
         supported_lang_codes = [code for code, _ in request.env['res.lang'].get_installed()]
         lang = request.context.get('lang', '').split('_')[0]
         if lang in supported_lang_codes:
             values['lang'] = lang
         self._signup_with_values(qcontext.get('token'), values)
         request.env.cr.commit()
+    
+class AuthSignup(AuthSignupHome):
 
     def get_auth_signup_qcontext(self):
-        SIGN_UP_REQUEST_PARAMS.update({'phone', 'attachment', 'attachment_name'})
+        SIGN_UP_REQUEST_PARAMS.update({'phone'})
         return super().get_auth_signup_qcontext()
+
+    def _signup_with_values(self, token, values):
+        context = self.get_auth_signup_qcontext()
+        attachment = context.get('attachment')
+
+        if attachment:
+            datas = base64.b64encode(attachment.read())
+            values.update({'attachment': datas, 'attachment_name': attachment.filename})
+        super(AuthSignup, self)._signup_with_values(token, values)
