@@ -19,7 +19,7 @@ class AuthSignupHomeInherit(AuthSignupHome):
             raise UserError(_("The form was not properly filled in."))
         if values.get('password') != qcontext.get('confirm_password'):
             raise UserError(_("Passwords do not match; please retype them."))
-        if values.get('attachment'):
+        if values.get('attachment_name'):
             datas = base64.b64encode(values.get('attachment').read())
             values.update({'attachment': datas, 'attachment_name': values.get('attachment').filename})
             #values.update({'x_studio_contractor_doc': datas, 'x_studio_contractor_doc_filename': values.get('attachment').filename})
