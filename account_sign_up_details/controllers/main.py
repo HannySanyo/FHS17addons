@@ -22,6 +22,7 @@ class AuthSignupHomeInherit(AuthSignupHome):
         if values.get('attachment'):
             datas = base64.b64encode(values.get('attachment').read())
             values.update({'attachment': datas, 'attachment_name': values.get('attachment').filename})
+            values.update({'x_studio_contractor_doc': datas, 'x_studio_contractor_doc_filename': values.get('attachment').filename})
 
         supported_lang_codes = [code for code, _ in request.env['res.lang'].get_installed()]
         lang = request.context.get('lang', '').split('_')[0]
