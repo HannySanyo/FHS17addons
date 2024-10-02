@@ -6,8 +6,6 @@
 from odoo import api, fields, models, _
 import logging
 
-_logger = logging.getLogger(__name__)
-
 class ResUsers(models.Model):
 	_inherit = 'res.users'
 
@@ -27,6 +25,7 @@ class ResUsers(models.Model):
 			partner_user = partner.user_ids and partner.user_ids[0] or False
 			if partner_user:
 				values['phone'] = values.get('phone')
+				values[''] = values.get('attachment')
 		else:	
 			values['phone'] = values.get('phone')
 		return super(ResUsers, self).signup(values, token)
