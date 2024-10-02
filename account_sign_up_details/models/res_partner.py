@@ -8,15 +8,15 @@ from odoo import models, fields, api
 class ResPartnerInherit(models.Model):
     _inherit = 'res.partner'
 
+    attachment = fields.Binary(string="Attachment", attachment=True)
+    attachment_name = fields.Char(string='Attachment Name')
+
     @api.model
     def update_custom_field(self, vals):
         partners = self.search([('active', '=', True)])
         for partner in partners:
             partner.x_studio_contractor_doc = vals.get('attachment') 
             partner.x_studio_contractor_doc_filename = vals.get('attachment_name')
-
-    # attachment = fields.Binary(string="Attachment", attachment=True)
-    # attachment_name = fields.Char(string='Attachment Name')
 
     # @api.model
     # def create_attachment_record(self, vals):
