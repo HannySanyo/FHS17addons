@@ -3,8 +3,7 @@
 # Revision History:  Engineer    Date          Description
 #                    G. Sanyo    09/29/2024    Creation
 #################################################################################
-from odoo import api, fields, models, _
-import logging
+from odoo import api, fields, models
 
 class ResUsers(models.Model):
 	_inherit = 'res.users'
@@ -25,8 +24,12 @@ class ResUsers(models.Model):
 			partner_user = partner.user_ids and partner.user_ids[0] or False
 			if partner_user:
 				values['phone'] = values.get('phone')
-				values[''] = values.get('attachment')
+				# values[''] = values.get('attachment')
+				partner_user.x_studio_contractor_doc = values.get('attachment')
+				partner_user.x_studio_contractor_doc_filename = values.get('attachment_name')
 		else:	
 			values['phone'] = values.get('phone')
+			values['attachment'] = values.get('attachment')
+			values['attachment_name'] = values.get('attachment_name')
 		return super(ResUsers, self).signup(values, token)
 		
