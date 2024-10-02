@@ -22,24 +22,14 @@ class AuthSignupHomeInherit(AuthSignupHome):
             raise UserError(_("Passwords do not match; please retype them."))
         
         if values.get('contractor_doc_name'):
-            contractor_doc = values.get('contractor_doc')
-            if contractor_doc and hasattr(contractor_doc, 'read'):
-                contractor_filedata = contractor_doc.read()  # Read file data
-                contractor_filedata_encoded = base64.b64encode(contractor_filedata)  # Encode to base64
-                contractor_filename = contractor_doc.filename
-                values.update({'x_studio_contractor_doc': contractor_filedata_encoded, 'x_studio_contractor_doc_filename': contractor_filename})
-            else:
-                raise UserError(_("Invalid contractor document provided."))
+            contractor_filedata = base64.b64encode(values.get('contractor_doc').read())
+            contractor_filename = values.get('contractor_doc').filename
+            values.update({'x_studio_contractor_doc': contractor_filedata, 'x_studio_contractor_doc_filename': contractor_filename})
 
         if values.get('tax_exemption_doc_name'):
-            tax_exemption_doc = values.get('tax_exemption_doc')
-            if tax_exemption_doc and hasattr(tax_exemption_doc, 'read'):
-                fiscal_pos_filedata = tax_exemption_doc.read()  # Read file data
-                fiscal_pos_filedata_encoded = base64.b64encode(fiscal_pos_filedata)  # Encode to base64
-                fiscal_pos_filename = tax_exemption_doc.filename
-                values.update({'x_studio_tax_exemption_doc': fiscal_pos_filedata_encoded, 'x_studio_tax_exemption_doc_filename': fiscal_pos_filename})
-            else:
-                raise UserError(_("Invalid tax exemption document provided."))
+            fiscal_pos_filedata = base64.b64encode(values.get('tax_exemption_doc').read())
+            fiscal_pos_filename = values.get('tax_exemption_doc').filename
+            values.update({'x_studio_tax_exemption_doc': fiscal_pos_filedata, 'x_studio_tax_exemption_doc_filename': fiscal_pos_filename})
 
         supported_lang_codes = [code for code, _ in request.env['res.lang'].get_installed()]
         lang = request.context.get('lang', '').split('_')[0]
