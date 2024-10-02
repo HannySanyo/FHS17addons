@@ -8,8 +8,8 @@ from odoo import models, fields, api
 class ResPartnerInherit(models.Model):
     _inherit = 'res.partner'
 
-    # attachment = fields.Binary(string="Attachment", attachment=True)
-    # attachment_name = fields.Char(string='Attachment Name')
+    attachment = fields.Binary(string="Attachment", attachment=True)
+    attachment_name = fields.Char(string='Attachment Name')
 
     # @api.model
     # def update_custom_field(self, vals):
