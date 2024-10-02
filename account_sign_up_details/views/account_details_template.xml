@@ -15,11 +15,20 @@
 		</xpath>
         <xpath expr="//div[last()]" position="after">
             <div class="form-group field-login">
-                <label for="attachment">If you are a contractor, please provide contractor license documentation:</label>
-                <input type="file" name="attachment" id="attachment" class="form-control form-control-sm"/>
-                <input type="hidden" name="attachment_name" t-att-value="'file_' + (name or 'default_name')" />
+                <label for="contractor_doc">If you are a contractor, please provide contractor license documentation:</label>
+                <input type="file" name="contractor_doc" id="contractor_doc" class="form-control form-control-sm"/>
+                <input type="hidden" name="contractor_doc_name" t-att-value="'file_' + (name or 'default_name')" />
             </div>
-            <div style="height:20px">
+            <div style="height:15px">
+            </div>
+        </xpath>
+        <xpath expr="//div[last()]" position="after">
+            <div class="form-group field-login">
+                <label for="fiscal_pos_doc">If you are tax exempt, please provide tax exemption documentation:</label>
+                <input type="file" name="fiscal_pos_doc" id="fiscal_pos_doc" class="form-control form-control-sm"/>
+                <input type="hidden" name="fiscal_pos_doc_name" t-att-value="'file_' + (name or 'default_name')" />
+            </div>
+            <div style="height:15px">
             </div>
         </xpath>
     </template>
