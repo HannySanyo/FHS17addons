@@ -40,5 +40,5 @@ class AuthSignupHomeInherit(AuthSignupHome):
         request.env.cr.commit()
 
     def get_auth_signup_qcontext(self):
-        SIGN_UP_REQUEST_PARAMS.update({'phone','contractor_doc', 'contractor_doc_name', 'fiscal_pos__doc', 'fiscal_pos_doc_name'})
+        SIGN_UP_REQUEST_PARAMS.update({'phone', 'contractor_doc', 'contractor_doc_name', 'fiscal_pos_doc', 'fiscal_pos_doc_name'})
         return super().get_auth_signup_qcontext()
