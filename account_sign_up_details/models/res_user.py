@@ -24,8 +24,7 @@ class ResUsers(models.Model):
 			partner_user = partner.user_ids and partner.user_ids[0] or False
 			if partner_user:
 				values['phone'] = values.get('phone')
-				partner_user.x_studio_contractor_doc = values.get('attachment')
-				partner_user.x_studio_contractor_doc_filename = values.get('attachment_name')
+
 		else:	
 			values['phone'] = values.get('phone')
 		return super(ResUsers, self).signup(values, token)
