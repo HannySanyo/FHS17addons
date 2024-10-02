@@ -14,14 +14,14 @@ from odoo.addons.auth_signup.controllers.main import AuthSignupHome
 class AuthSignupHomeInherit(AuthSignupHome):
     def do_signup(self, qcontext):
         """ Shared helper that creates a res.partner out of a token """
-        values = {key: qcontext.get(key) for key in ('login', 'name', 'password', 'phone', 'x_studio_contractor_doc','x_studio_contractor_doc_filename') }
+        values = {key: qcontext.get(key) for key in ('login', 'name', 'password', 'phone', 'attachment','attachment_name') }
         if not values:
             raise UserError(_("The form was not properly filled in."))
         if values.get('password') != qcontext.get('confirm_password'):
             raise UserError(_("Passwords do not match; please retype them."))
-        if values.get('x_studio_contractor_doc'):
-            datas = base64.b64encode(values.get('x_studio_contractor_doc').read())
-            values.update({'x_studio_contractor_doc': datas, 'x_studio_contractor_doc_filename': values.get('x_studio_contractor_doc').filename})
+        if values.get('attachment_name'):
+            datas = base64.b64encode(values.get('attachment').read())
+            values.update({'attachment': datas, 'attachment_name': values.get('attachment').filename})
 
         supported_lang_codes = [code for code, _ in request.env['res.lang'].get_installed()]
         lang = request.context.get('lang', '').split('_')[0]
@@ -31,5 +31,5 @@ class AuthSignupHomeInherit(AuthSignupHome):
         request.env.cr.commit()
 
     def get_auth_signup_qcontext(self):
-        SIGN_UP_REQUEST_PARAMS.update({'phone', 'x_studio_contractor_doc', 'x_studio_contractor_doc_filename'})
+        SIGN_UP_REQUEST_PARAMS.update({'phone', 'attachment', 'attachment_name'})
         return super().get_auth_signup_qcontext()
