@@ -20,4 +20,11 @@
   "installable"          :  True,
   "auto_install"         :  False,
   "pre_init_hook"        :  "pre_init_check",
+  'assets':{
+  'web.assets_frontend':[
+    
+    'account_sign_up_details/static/src/js/validate.js',
+    
+    ],
+  },
 }
