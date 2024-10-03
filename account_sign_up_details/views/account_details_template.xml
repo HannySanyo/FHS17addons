@@ -6,30 +6,28 @@
         </xpath>
     </template>
 
-	<template id="auth_signup_extended" inherit_id="auth_signup.fields" name="Account Signup Phone Number">
-		<xpath expr="//div[@class='mb-3 field-confirm_password']" position="after">
-			<div class="mb-3 field-phone]">
-				<label for="phone">Phone Number</label>
-				<input type="phone"  name="phone" t-att-value="phone" id="phone" class="form-control form-control-sm" required="required" placeholder="+13038657377" />
-			</div>
-		</xpath>
+    <template id="auth_signup_extended" inherit_id="auth_signup.fields" name="Account Signup Phone Number">
+        <xpath expr="//div[@class='mb-3 field-confirm_password']" position="after">
+            <div class="mb-3 field-phone">
+                <label for="phone">Phone Number</label>
+                <input type="tel" name="phone" t-att-value="phone" id="phone" class="form-control form-control-sm" required="required" placeholder="+13038657377" />
+            </div>
+        </xpath>
         <xpath expr="//div[last()]" position="after">
-            <div class="form-group field-login">
+            <div class="form-group field-contractor_doc">
                 <label for="contractor_doc">If you are a contractor, please provide contractor license documentation:</label>
                 <input type="file" name="contractor_doc" id="contractor_doc" class="form-control form-control-sm"/>
                 <input type="hidden" name="contractor_doc_name" t-att-value="'file_' + (name or 'default_name')" />
             </div>
-            <div style="height:15px">
-            </div>
+            <div style="height:15px"></div>
         </xpath>
         <xpath expr="//div[last()]" position="after">
-            <div class="form-group field-login">
+            <div class="form-group field-tax_exemption_doc">
                 <label for="tax_exemption_doc">If you are tax exempt, please provide tax exemption documentation:</label>
                 <input type="file" name="tax_exemption_doc" id="tax_exemption_doc" class="form-control form-control-sm"/>
                 <input type="hidden" name="tax_exemption_doc_name" t-att-value="'file_' + (name or 'default_name')" />
             </div>
-            <div style="height:15px">
-            </div>
+            <div style="height:15px"></div>
         </xpath>
     </template>
 </odoo>

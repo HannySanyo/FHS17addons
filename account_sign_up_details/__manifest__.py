@@ -12,7 +12,7 @@
   "author"               :  "FHS - G.S.S.",
   "depends"              :  ['auth_signup'],
   "data"                 :  [
-                             'views/account_details_template.xml',
+                              'views/account_details_template.xml',
                               'views/res_partner_view.xml',
                             ],
   "images"               :  ['static/description/fhs.png'],

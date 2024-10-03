@@ -24,6 +24,10 @@ class ResUsers(models.Model):
 			partner_user = partner.user_ids and partner.user_ids[0] or False
 			if partner_user:
 				values['phone'] = values.get('phone')
+				values['contractor_doc'] = values.get('contractor_doc')
+				values['contractor_doc_name'] = values.get('contractor_doc_name')
+				values['tax_exemption_doc'] = values.get('tax_exemption_doc')
+				values['tax_exemption_doc_name'] = values.get('tax_exemption_doc_name')
 
 		else:	
 			values['phone'] = values.get('phone')
