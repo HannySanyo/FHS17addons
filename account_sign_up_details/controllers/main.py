@@ -3,6 +3,14 @@
 # Revision History:  Engineer    Date          Description
 #                    G. Sanyo    09/29/2024    Creation
 #################################################################################
+import base64
+from odoo import _
+from odoo import http
+from odoo.http import request,route
+from odoo.exceptions import UserError
+from odoo.addons.web.controllers.home import SIGN_UP_REQUEST_PARAMS
+from odoo.addons.auth_signup.controllers.main import AuthSignupHome
+    
 import logging
 
 _logger = logging.getLogger(__name__)
