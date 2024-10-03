@@ -11,37 +11,25 @@ from odoo.exceptions import UserError
 from odoo.addons.web.controllers.home import SIGN_UP_REQUEST_PARAMS
 from odoo.addons.auth_signup.controllers.main import AuthSignupHome
     
-import logging
-
-_logger = logging.getLogger(__name__)
-
 class AuthSignupHomeInherit(AuthSignupHome):
     def do_signup(self, qcontext):
         """ Shared helper that creates a res.partner out of a token """
-        values = {key: qcontext.get(key) for key in ('login', 'name', 'password', 'phone', 'contractor_doc', 'contractor_doc_name', 'tax_exemption_doc', 'tax_exemption_doc_name')}
-        _logger.info("Signup values: %s", values)  # Log the values for debugging
-        
+        values = {key: qcontext.get(key) for key in ('login', 'name', 'password', 'phone', 'contractor_doc', 'contractor_doc_name', 'tax_exemption_doc', 'tax_exemption_doc_name') }
         if not values:
             raise UserError(_("The form was not properly filled in."))
         
         if values.get('password') != qcontext.get('confirm_password'):
             raise UserError(_("Passwords do not match; please retype them."))
+        
+        if values.get('contractor_doc_name'):
+            contractor_filedata = base64.b64encode(values.get('contractor_doc').read())
+            contractor_filename = values.get('contractor_doc_name')
+            values.update({'x_studio_contractor_doc': contractor_filedata, 'x_studio_contractor_doc_filename': contractor_filename})
 
-        if 'contractor_doc' in values and values['contractor_doc']:
-            if hasattr(values['contractor_doc'], 'read'):
-                contractor_filedata = base64.b64encode(values['contractor_doc'].read())
-                contractor_filename = values.get('contractor_doc_name')
-                values.update({'x_studio_contractor_doc': contractor_filedata, 'x_studio_contractor_doc_filename': contractor_filename})
-            else:
-                _logger.warning("contractor_doc is not a FileStorage object: %s", type(values['contractor_doc']))
-
-        if 'tax_exemption_doc' in values and values['tax_exemption_doc']:
-            if hasattr(values['tax_exemption_doc'], 'read'):
-                fiscal_pos_filedata = base64.b64encode(values['tax_exemption_doc'].read())
-                fiscal_pos_filename = values.get('tax_exemption_doc_name')
-                values.update({'x_studio_fiscal_doc': fiscal_pos_filedata, 'x_studio_fiscal_doc_filename': fiscal_pos_filename})
-            else:
-                _logger.warning("tax_exemption_doc is not a FileStorage object: %s", type(values['tax_exemption_doc']))
+        if values.get('tax_exemption_doc_name'):
+            fiscal_pos_filedata = base64.b64encode(values.get('tax_exemption_doc').read())
+            fiscal_pos_filename = values.get('tax_exemption_doc_name')
+            values.update({'x_studio_fiscal_doc': fiscal_pos_filedata, 'x_studio_fiscal_doc_filename': fiscal_pos_filename})
 
         supported_lang_codes = [code for code, _ in request.env['res.lang'].get_installed()]
         lang = request.context.get('lang', '').split('_')[0]
