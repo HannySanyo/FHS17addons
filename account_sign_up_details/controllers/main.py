@@ -29,7 +29,7 @@ class AuthSignupHomeInherit(AuthSignupHome):
         if values.get('tax_exemption_doc_name'):
             fiscal_pos_filedata = base64.b64encode(values.get('tax_exemption_doc').read())
             fiscal_pos_filename = values.get('tax_exemption_doc').filename
-            values.update({'tax_exemption_doc': fiscal_pos_filedata, 'tax_exemption_doc_filename': fiscal_pos_filename})
+            values.update({'x_studio_tax_exemption_doc': fiscal_pos_filedata, 'x_studio_tax_exemption_doc_filename': fiscal_pos_filename})
 
         supported_lang_codes = [code for code, _ in request.env['res.lang'].get_installed()]
         lang = request.context.get('lang', '').split('_')[0]
