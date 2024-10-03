@@ -10,8 +10,8 @@ class ResPartnerInherit(models.Model):
 
     contractor_doc = fields.Binary(string='Contractor Doc', attachment=True)
     contractor_doc_name = fields.Char(string='Contractor Doc Name')
-    fiscal_pos_doc = fields.Binary(string='Fiscal Position', attachment=True)
-    fiscal_pos_doc_name = fields.Char(string='Fiscal Position Name')
+    tax_exemption_doc = fields.Binary(string='Fiscal Position', attachment=True)
+    tax_exemption_doc_name = fields.Char(string='Fiscal Position Name')
 
 
     @api.model
