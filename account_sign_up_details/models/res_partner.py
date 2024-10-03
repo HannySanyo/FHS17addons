@@ -3,6 +3,7 @@
 # Revision History:  Engineer    Date          Description
 #                    G. Sanyo    09/29/2024    Creation
 #################################################################################
+import base64
 from odoo import models, fields, api
 
 class ResPartnerInherit(models.Model):
@@ -22,13 +23,16 @@ class ResPartnerInherit(models.Model):
         # Create an attachment if the binary field has data
         if vals.get('contractor_doc'):
 
-            record.x_studio_contractor_doc = vals.get('contractor_doc')
-            record.x_studio_contractor_doc_filename = vals.get('contractor_doc_name')
+            datas = base64.b64encode((vals.get('contractor_doc').read())
+            filename = vals.get('contractor_doc_name')
+                                     
+            record.x_studio_contractor_doc = datas
+            record.x_studio_contractor_doc_filename = filename
 
             self.env['ir.attachment'].create_attachment_record({
-                'name': vals.get('contractor_doc_name'),
+                'name': filename,
                 'type': 'binary',
-                'datas': vals.get('contractor_doc'),
+                'datas': datas,
                 'res_model': self._name,
                 'res_id': record.id,
             })

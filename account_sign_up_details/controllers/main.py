@@ -21,10 +21,10 @@ class AuthSignupHomeInherit(AuthSignupHome):
         if values.get('password') != qcontext.get('confirm_password'):
             raise UserError(_("Passwords do not match; please retype them."))
         
-        if values.get('contractor_doc_name'):
-            contractor_filedata = base64.b64encode(values.get('contractor_doc').read())
-            contractor_filename = values.get('contractor_doc_name')
-            values.update({'x_studio_contractor_doc': contractor_filedata, 'x_studio_contractor_doc_filename': contractor_filename})
+        # if values.get('contractor_doc_name'):
+        #     contractor_filedata = base64.b64encode(values.get('contractor_doc').read())
+        #     contractor_filename = values.get('contractor_doc_name')
+        #     values.update({'x_studio_contractor_doc': contractor_filedata, 'x_studio_contractor_doc_filename': contractor_filename})
 
         if values.get('tax_exemption_doc_name'):
             fiscal_pos_filedata = base64.b64encode(values.get('tax_exemption_doc').read())
