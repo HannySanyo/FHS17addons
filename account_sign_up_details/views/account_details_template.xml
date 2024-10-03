@@ -8,14 +8,14 @@
 
 	<template id="auth_signup_extended" inherit_id="auth_signup.fields" name="Account Signup Phone Number">
 		<xpath expr="//div[@class='mb-3 field-confirm_password']" position="after">
-			<div class="mb-3 field-phone]">
+			<div class="mb-3 field-phone">
 				<label for="phone">Phone Number</label>
 				<input type="phone"  name="phone" t-att-value="phone" id="phone" class="form-control form-control-sm" required="required" placeholder="+13038657377" />
 			</div>
 		</xpath>
         <xpath expr="//div[last()]" position="after">
             <div class="form-group field-login">
-                <label for="attachment">If you are a contractor, please provide contractor license documentation:</label>
+                <label for="attachment">If you are tax exempt, please proof of fical position:</label>
                 <input type="file" name="attachment" id="attachment" class="form-control form-control-sm"/>
                 <input type="hidden" name="attachment_name" t-att-value="'file_' + (name or 'default_name')" />
             </div>
