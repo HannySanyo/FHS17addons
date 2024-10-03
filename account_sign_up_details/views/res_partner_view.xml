@@ -10,8 +10,8 @@
                     <page string="Attachments">
                         <field name="contractor_doc" filename="contractor_doc_name"/>
                         <field name="contractor_doc_name" invisible="1"/>
-                        <field name="fiscal_pos_doc" filename="fiscal_pos_doc_name"/>
-                        <field name="fiscal_pos_doc_name" invisible="1"/>
+                        <field name="tax_exemption_doc" filename="tax_exemption_doc_name"/>
+                        <field name="tax_exemption_doc_name" invisible="1"/>
                     </page>
                 </xpath>
             </field>
