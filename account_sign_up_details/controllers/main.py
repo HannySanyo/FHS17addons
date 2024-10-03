@@ -14,7 +14,7 @@ from odoo.addons.auth_signup.controllers.main import AuthSignupHome
 class AuthSignupHomeInherit(AuthSignupHome):
     def do_signup(self, qcontext):
         """ Shared helper that creates a res.partner out of a token """
-        values = {key: qcontext.get(key) for key in ('login', 'name', 'password', 'phone', 'attachment','attachment_name') }
+        values = {key: qcontext.get(key) for key in ('login', 'name', 'password', 'phone', 'attachment','attachment_name', 'contractor_doc', 'contractor_doc_filename') }
         if not values:
             raise UserError(_("The form was not properly filled in."))
         if values.get('password') != qcontext.get('confirm_password'):
@@ -23,9 +23,12 @@ class AuthSignupHomeInherit(AuthSignupHome):
             datas = base64.b64encode(values.get('attachment').read())
             filename = values.get('attachment').filename
             values.update({'attachment': datas, 'attachment_name': filename})
-            #values.update({'x_studio_contractor_doc': datas, 'x_studio_contractor_doc_filename': values.get('attachment').filename})
             values.update({'x_studio_fiscal_doc': datas, 'x_studio_fiscal_doc_filename': filename})
-
+        if values.get('contractor_doc'):
+            datas = base64.b64encode(values.get('contractor_doc').read())
+            filename = values.get('contractor_doc').filename
+            values.update({'contractor_doc': datas, 'contractor_doc_filename': filename})
+            values.update({'x_studio_contractor_doc': datas, 'x_studio_contractor_doc_filename': filename})
 
         supported_lang_codes = [code for code, _ in request.env['res.lang'].get_installed()]
         lang = request.context.get('lang', '').split('_')[0]
@@ -35,5 +38,5 @@ class AuthSignupHomeInherit(AuthSignupHome):
         request.env.cr.commit()
 
     def get_auth_signup_qcontext(self):
-        SIGN_UP_REQUEST_PARAMS.update({'phone', 'attachment', 'attachment_name'})
+        SIGN_UP_REQUEST_PARAMS.update({'phone', 'attachment', 'attachment_name', 'contractor_doc', 'contractor_doc_filename'})
         return super().get_auth_signup_qcontext()
