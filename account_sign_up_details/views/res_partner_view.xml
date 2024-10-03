@@ -7,9 +7,9 @@
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//form/sheet/notebook" position="inside">
-                  <!--  <page string="Attachments">
-                        <field name="contractor_doc" filename="contractor_doc_name"/>
-                        <field name="contractor_doc_name" invisible="1"/>
+                    <page string="Attachments">
+                        <!--<field name="contractor_doc" filename="contractor_doc_name"/>
+                        <field name="contractor_doc_name" invisible="1"/> -->
                         <field name="tax_exemption_doc" filename="tax_exemption_doc_name"/>
                         <field name="tax_exemption_doc_name" invisible="1"/>
                     </page>-->
