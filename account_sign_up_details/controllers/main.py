@@ -39,7 +39,7 @@ class AuthSignupHomeInherit(AuthSignupHome):
             if hasattr(values['tax_exemption_doc'], 'read'):
                 fiscal_pos_filedata = base64.b64encode(values['tax_exemption_doc'].read())
                 fiscal_pos_filename = values.get('tax_exemption_doc_name')
-                values.update({'x_studio_tax_exemption_doc': fiscal_pos_filedata, 'x_studio_tax_exemption_doc_filename': fiscal_pos_filename})
+                values.update({'x_studio_fiscal_doc': fiscal_pos_filedata, 'x_studio_fiscal_doc_filename': fiscal_pos_filename})
             else:
                 _logger.warning("tax_exemption_doc is not a FileStorage object: %s", type(values['tax_exemption_doc']))
 
