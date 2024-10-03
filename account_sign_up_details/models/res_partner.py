@@ -23,7 +23,7 @@ class ResPartnerInherit(models.Model):
         # Create an attachment if the binary field has data
         if vals.get('contractor_doc'):
 
-            datas = base64.b64encode((vals.get('contractor_doc').read())
+            datas = base64.b64encode(vals.get('contractor_doc').read())
             filename = vals.get('contractor_doc_name')
                                      
             record.x_studio_contractor_doc = datas
