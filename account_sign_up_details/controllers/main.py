@@ -1,6 +1,8 @@
 #################################################################################
 # File Name: main.py
 # Revision History:  Engineer    Date          Description
+#                    G. Sanyo    10/03/2024    Add attachments for contractor doc
+#                                              and fiscal position doc
 #                    G. Sanyo    09/29/2024    Creation
 #################################################################################
 import base64
@@ -14,15 +16,15 @@ from odoo.addons.auth_signup.controllers.main import AuthSignupHome
 class AuthSignupHomeInherit(AuthSignupHome):
     def do_signup(self, qcontext):
         """ Shared helper that creates a res.partner out of a token """
-        values = {key: qcontext.get(key) for key in ('login', 'name', 'password', 'phone', 'attachment','attachment_name', 'contractor_doc', 'contractor_doc_filename') }
+        values = {key: qcontext.get(key) for key in ('login', 'name', 'password', 'phone', 'fiscal_pos_doc','fiscal_pos_doc_name', 'contractor_doc', 'contractor_doc_filename') }
         if not values:
             raise UserError(_("The form was not properly filled in."))
         if values.get('password') != qcontext.get('confirm_password'):
             raise UserError(_("Passwords do not match; please retype them."))
-        if values.get('attachment_name'):
-            datas = base64.b64encode(values.get('attachment').read())
-            filename = values.get('attachment').filename
-            values.update({'attachment': datas, 'attachment_name': filename})
+        if values.get('fiscal_pos_doc_name'):
+            datas = base64.b64encode(values.get('fiscal_pos_doc').read())
+            filename = values.get('fiscal_pos_doc').filename
+            values.update({'fiscal_pos_doc': datas, 'fiscal_pos_doc_name': filename})
             values.update({'x_studio_fiscal_doc': datas, 'x_studio_fiscal_doc_filename': filename})
         if values.get('contractor_doc'):
             datas = base64.b64encode(values.get('contractor_doc').read())
@@ -38,5 +40,5 @@ class AuthSignupHomeInherit(AuthSignupHome):
         request.env.cr.commit()
 
     def get_auth_signup_qcontext(self):
-        SIGN_UP_REQUEST_PARAMS.update({'phone', 'attachment', 'attachment_name', 'contractor_doc', 'contractor_doc_filename'})
+        SIGN_UP_REQUEST_PARAMS.update({'phone', 'fiscal_pos_doc', 'fiscal_pos_doc_name', 'contractor_doc', 'contractor_doc_filename'})
         return super().get_auth_signup_qcontext()
