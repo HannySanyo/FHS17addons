@@ -13,7 +13,7 @@
   "depends"              :  ['auth_signup'],
   "data"                 :  [
                              'views/account_details_template.xml',
-                             'views/res_partner_view.xml',
+                             #'views/res_partner_view.xml',  # This file is used to create page 'tabs' with the attachments, not need if not wanted
                             ],
   "images"               :  ['static/description/fhs.png'],
   "application"          :  True,
