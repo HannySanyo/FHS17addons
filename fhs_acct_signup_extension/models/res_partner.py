@@ -12,8 +12,8 @@ class ResPartnerInherit(models.Model):
 
     contractor_doc = fields.Binary(string='Contractor Doc', attachment=True)
     contractor_doc_filename = fields.Char(string='Contractor Doc Name')
-    attachment = fields.Binary(string='Fiscal Position Doc', attachment=True)
-    attachment_name = fields.Char(string='Fiscal Position Doc Name')
+    fiscal_pos_doc = fields.Binary(string='Fiscal Position Doc', attachment=True)
+    fiscal_pos_doc_name = fields.Char(string='Fiscal Position Doc Name')
 
     @api.model
     def create_attachment_record(self, vals):
