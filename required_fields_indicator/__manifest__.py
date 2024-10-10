@@ -10,7 +10,7 @@
     'author': "Hari",
     'website': "https://www.linkedin.com/in/hari-prasath-b4266718b",
     'category': 'Extra Rights',
-    'version': '17.0.0.0',
+    'version': '18.0.0.0',
     'depends': ['base','web'],
     'installable': True,
     'images': ['static/description/banner.gif'],
